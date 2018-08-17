@@ -68,6 +68,66 @@ export default {
           active: false,
           front: 'папа',
           done: false
+        },
+        {
+          back: 'car',
+          front: 'машина',
+          active: false,
+          done: false
+        },
+        {
+          back: 'hope',
+          front: 'надежда',
+          active: false,
+          done: false
+        },
+        {
+          back: 'How is it going?',
+          front: 'Как идут дела?',
+          active: false,
+          done: false
+        },
+        {
+          back: 'Talk to you later!',
+          front: 'Поговорим с тобой позже!',
+          active: false,
+          done: false
+        },
+        {
+          back: 'All the same',
+          front: 'без разницы',
+          active: false,
+          done: false
+        },
+        {
+          back: 'Believe it or not, but',
+          front: 'верите или нет, но',
+          active: false,
+          done: false
+        },
+        {
+          back: 'in a way / to a certain extent',
+          front: 'В каком-то смысле',
+          active: false,
+          done: false
+        },
+        {
+          back: 'It’s a great idea!',
+          front: 'Отличная идея!',
+          active: false,
+          done: false
+        },
+        {
+          back: 'Thank you in advance!',
+          front: 'Спасибо заранее!',
+          active: false,
+          done: false
+        },
+        {
+          back: 'After you!',
+          front: 'После вас!',
+          active: false,
+          done: false
         }
       ]
     }
