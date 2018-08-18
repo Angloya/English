@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Словарные карточки</router-link> |
-      <router-link to="/Word">Перевод-слово</router-link>
+      <router-link to="/home">Словарные карточки</router-link> |
+      <router-link to="/WordRu">Слово-перевод</router-link> |
+      <router-link to="/WordEn">Перевод-слово</router-link>
     </div>
     <router-view/>
   </div>

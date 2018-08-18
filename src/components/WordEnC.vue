@@ -5,7 +5,7 @@
     <input type="text" id="word" v-on:keypress.enter="addWord" placeholder="Enter a english word"  v-model="newback"/>
     </label>
     <label>Перевод
-    <input type="text" id="translation" v-on:keypress.enter="addWord" placeholder="Enter a translation" v-model="newfront"/>
+    <input type="text" id="word" v-on:keypress.enter="addWord" placeholder="Enter a translation" v-model="newfront"/>
     </label>
     <img src="../assets/Plus.png" class="add" @click="addWord">
 </form>
@@ -23,18 +23,17 @@
           <img src="../assets/remove.png" class="remove" alt="" v-on:click="remove(index)">
            <img src="../assets/help.png" class="remove" alt="" @click="active(word)">
            </div>
-          <transition name="flip">
           <div class="card">
-            <p>{{word.front}}</p>
-            <p v-show="word.active">{{word.back}}</p>
+            <transition name="flip">
+            <p v-bind:key="word.active" class="word">{{word.active ? word.back : word.front}}</p>
+            </transition>
             <div class="input">
-            <input class="input" type="text" required id="translation" v-on:keypress.enter="checked(word)" placeholder="Enter" v-model="word.checkback" />
+            <input class="translation" type="text" required id="translation" v-on:keypress.enter="checked(word)" placeholder="Enter a word" v-model="word.checkback" />
             <img v-show="!word.done" src="../assets/Plus.png" class="add" @click="checked(word)">
             </div>
            <span v-show="word.right2" class="right">Неверно</span>
            <span v-show="word.right" class="right">Верно! Молодец!</span>
           </div>
-          </transition>
     </li>
 </ul>
 </div>
@@ -106,23 +105,23 @@ export default {
           right2: false
         },
         {
-          back: 'How is it going?',
-          front: 'Как идут дела?',
+          back: 'how is it going?',
+          front: 'как идут дела?',
           active: false,
           done: false,
           right: false,
           right2: false
         },
         {
-          back: 'Talk to you later!',
-          front: 'Поговорим с тобой позже!',
+          back: 'talk to you later!',
+          front: 'поговорим с тобой позже!',
           active: false,
           done: false,
           right: false,
           right2: false
         },
         {
-          back: 'All the same',
+          back: 'all the same',
           front: 'без разницы',
           active: false,
           done: false,
@@ -130,7 +129,7 @@ export default {
           right2: false
         },
         {
-          back: 'Believe it or not, but',
+          back: 'believe it or not, but',
           front: 'верите или нет, но',
           active: false,
           done: false,
@@ -139,31 +138,31 @@ export default {
         },
         {
           back: 'in a way / to a certain extent',
-          front: 'В каком-то смысле',
+          front: 'в каком-то смысле',
           active: false,
           done: false,
           right: false,
           right2: false
         },
         {
-          back: 'It’s a great idea!',
-          front: 'Отличная идея!',
+          back: 'it’s a great idea!',
+          front: 'отличная идея!',
           active: false,
           done: false,
           right: false,
           right2: false
         },
         {
-          back: 'Thank you in advance!',
-          front: 'Спасибо заранее!',
+          back: 'thank you in advance!',
+          front: 'спасибо заранее!',
           active: false,
           done: false,
           right: false,
           right2: false
         },
         {
-          back: 'After you!',
-          front: 'После вас!',
+          back: 'after you!',
+          front: 'после вас!',
           active: false,
           done: false,
           right: false,
@@ -201,13 +200,13 @@ export default {
         word.right = true
         word.right2 = false
         word.done = true
+        this.saveWords()
       } else {
         word.right2 = true
         word.right = false
         word.done = false
         word.checkback = ''
       }
-      this.saveWords()
     },
     addWord () {
       if (!this.newfront || !this.newback) {
@@ -232,7 +231,6 @@ export default {
     },
     active (word) {
       word.active = !word.active
-      this.saveWords()
     },
     remove (id) {
       this.words.splice(id, 1)
@@ -322,6 +320,7 @@ input{
     height: 40px;
     font-weight: 300;
     font-size: 15px;
+    text-transform: lowercase;
 }
 li img{
   cursor: pointer;
@@ -335,6 +334,7 @@ text-overflow: ellipsis;
 cursor: pointer;
 margin: 0px;
 padding: 0px;
+padding-bottom: 10px;
 }
 .card div{
  display: flex;
@@ -354,7 +354,7 @@ padding: 0px;
 }
 li{
     min-width: 300px;
-    min-height: 250px;
+    min-height: 200px;
     background: rgb(0, 192, 80);
     margin: 5px;
     list-style-type: none;
@@ -364,7 +364,9 @@ li{
     overflow: hidden;
     color: #ffffff;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    padding: 10px;
+    text-transform: lowercase;
 }
 li:nth-child(2n+2) {
 background: #20B2AA;
@@ -399,9 +401,20 @@ label{
 .line:hover{
   background:#00FF00;
 }
-.input div{
+div .input {
   display: flex;
   flex-direction: row;
+  align-items: center;
+   padding-left: 20px;
 }
-
+div .input img {
+  padding-left: 10px;
+}
+#translation {
+background: rgba(202, 255, 252, 0.3);
+border: 1px solid rgba(125, 177, 159, 0.5);
+border-radius: 10px;
+padding:5px;
+text-transform: lowercase;
+}
 </style>

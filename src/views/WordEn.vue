@@ -1,15 +1,15 @@
 <template>
-  <wordEn/>
+  <WordEnC/>
 </template>
 
 <script>
 // @ is an alias to /src
-import wordEn from '@/components/Word_En.vue'
+import WordEnC from '@/components/WordEnC.vue'
 
 export default {
-  name: 'home',
+  name: 'wordEn',
   components: {
-    wordEn
+    WordEnC
   }
 }
 </script>
