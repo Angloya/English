@@ -18,7 +18,7 @@
  <span class="mark-all"> Все слова были изучены<input type="checkbox" id="mark-all" @click="selectAll">
 </span>
 <ul>
-    <li :class="{line: isDone(word)}" v-for="(word, index) in words" :key='index'>
+    <li :class="{line: isDoneRu(word)}" v-for="(word, index) in words" :key='index'>
       <div class="remove">
           <img src="../assets/remove.png" class="remove" alt="" v-on:click="remove(index)">
            <img src="../assets/help.png" class="remove" alt="" @click="active(word)">
@@ -29,10 +29,10 @@
             </transition>
             <div class="input">
             <input class="translation" type="text" required id="translation" v-on:keypress.enter="checked(word)" placeholder="Enter a translation" v-model="word.checkback" />
-            <img v-show="!word.done" src="../assets/Plus.png" class="add" @click="checked(word)">
+            <img v-show="!word.doneRu" src="../assets/Plus.png" class="add" @click="checked(word)">
             </div>
-           <span v-show="word.right2" class="right">Неверно</span>
-           <span v-show="word.right" class="right">Верно! Молодец!</span>
+           <span v-show="word.rightRu2" class="rightRu">Неверно</span>
+           <span v-show="word.rightRu" class="rightRu">Верно! Молодец!</span>
           </div>
     </li>
 </ul>
@@ -52,121 +52,121 @@ export default {
           back: 'apple',
           active: false,
           front: 'яблоко',
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'home',
           active: false,
           front: 'дом',
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'orange',
           active: false,
           front: 'апельсин',
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'mother',
           active: false,
           front: 'мама',
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'father',
           active: false,
           front: 'папа',
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'car',
           front: 'машина',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'hope',
           front: 'надежда',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'how is it going?',
           front: 'как идут дела?',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'talk to you later!',
           front: 'поговорим с тобой позже!',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'all the same',
           front: 'без разницы',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'believe it or not, but',
           front: 'верите или нет, но',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'in a way / to a certain extent',
           front: 'в каком-то смысле',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'it’s a great idea!',
           front: 'отличная идея!',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'thank you in advance!',
           front: 'спасибо заранее!',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         },
         {
           back: 'after you!',
           front: 'после вас!',
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         }
       ]
     }
@@ -197,14 +197,14 @@ export default {
     },
     checked (word) {
       if (this.checkedWord2(word, word.checkback, 'front')) {
-        word.right = true
-        word.right2 = false
-        word.done = true
+        word.rightRu = true
+        word.rightRu2 = false
+        word.doneRu = true
         this.saveWords()
       } else {
-        word.right2 = true
-        word.right = false
-        word.done = false
+        word.rightRu2 = true
+        word.rightRu = false
+        word.doneRu = false
         word.checkback = ''
       }
     },
@@ -218,13 +218,13 @@ export default {
           back: this.newback,
           front: this.newfront,
           active: false,
-          done: false,
-          right: false,
-          right2: false
+          doneRu: false,
+          rightRu: false,
+          rightRu2: false
         })
         this.error = false
         this.error2 = false
-        this.done = false
+        this.doneRu = false
       }
       this.newback = this.newfront = ''
       this.saveWords()
@@ -244,13 +244,13 @@ export default {
       const parsed = JSON.stringify(this.words)
       localStorage.setItem('words', parsed)
     },
-    isDone: function (word) {
-      return word.done
+    isDoneRu: function (word) {
+      return word.doneRu
     },
     selectAll: function (word) {
-      this.done = !this.done
+      this.doneRu = !this.doneRu
       for (var i = 0; i < this.words.length; i++) {
-        this.words[i].done = this.done
+        this.words[i].doneRu = this.doneRu
       }
       this.saveWords()
     }
